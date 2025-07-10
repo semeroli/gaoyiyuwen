@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高一语文高频考点精粹</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'STKaiti', serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f7f0e0 0%, #e8e1c8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #3c2f23;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* 水墨背景 */
+        .ink-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="rgba(60,47,35,0.03)" d="M40,20 Q100,5 160,30 T180,100 Q160,170 100,180 T20,160 Z"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="rgba(60,47,35,0.02)" cx="80" cy="150" r="50"/></svg>');
+            background-size: 800px 800px, 400px 400px;
+            animation: inkFloat 80s linear infinite;
+            z-index: 0;
+            opacity: 0.8;
+        }
+        
+        @keyframes inkFloat {
+            0% { background-position: 0 0, 100px 200px; }
+            100% { background-position: 2000px 0, 1500px 800px; }
+        }
+        
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            margin-bottom: 60px;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .header h1 {
+            font-size: 4.2rem;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            color: #8a1f1f;
+            text-shadow: 3px 3px 8px rgba(138,31,31,0.2);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header h1::before, .header h1::after {
+            content: "✒";
+            font-size: 3rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8a1f1f;
+            opacity: 0.7;
+        }
+        
+        .header h1::before { left: -60px; }
+        .header h1::after { right: -60px; }
+        
+        .header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 30px auto 0;
+            line-height: 1.8;
+            color: #5d4c3a;
+            background: rgba(232,225,200,0.6);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin: 40px auto;
+            color: #8a1f1f;
+            padding: 20px 40px;
+            position: relative;
+            display: inline-block;
+            max-width: 700px;
+            background: rgba(232,225,200,0.7);
+            border-radius: 50px;
+            font-family: 'STKaiti', serif;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 35px;
+            perspective: 1500px;
+            padding: 20px;
+        }
+        
+        .card {
+            width: 380px;
+            height: 480px;
+            background: rgba(255, 253, 245, 0.85);
+            border-radius: 15px;
+            padding: 35px 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(92, 71, 56, 0.15);
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            border: 2px solid #d9c7a8;
+            backdrop-filter: blur(3px);
+        }
+        
+        .card:hover {
+            transform: translateY(-20px) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(92, 71, 56, 0.25);
+        }
+        
+        .card-number {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: rgba(138, 31, 31, 0.2);
+            z-index: 1;
+            font-family: 'STKaiti', serif;
+        }
+        
+        .card-icon {
+            font-size: 4rem;
+            color: #8a1f1f;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(138, 31, 31, 0.3);
+            transition: all 0.4s;
+        }
+        
+        .card:hover .card-icon {
+            transform: scale(1.15);
+            text-shadow: 0 0 15px rgba(138, 31, 31, 0.5);
+        }
+        
+        .card-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #5d4c3a;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: bold;
+            font-family: 'STKaiti', serif;
+        }
+        
+        .card-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #8a1f1f, transparent);
+            transition: all 0.4s;
+        }
+        
+        .card:hover .card-title::after {
+            width: 150px;
+            background: linear-gradient(to right, transparent, #d9a663, transparent);
+        }
+        
+        .card-content {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            text-align: left;
+            color: #5d4c3a;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            padding: 10px 0;
+        }
+        
+        .card-content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,253,245,0), rgba(255,253,245,0.9));
+        }
+        
+        .classic-quote {
+            font-style: italic;
+            color: #8a1f1f;
+            padding: 15px;
+            border-left: 3px solid #d9a663;
+            margin: 15px 0;
+            text-align: center;
+            font-family: 'STKaiti', serif;
+            font-size: 1.2rem;
+            background: rgba(217,166,99,0.1);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .card-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: rgba(217, 166, 99, 0.15);
+            backdrop-filter: blur(3px);
+            border-top: 1px solid #d9c7a8;
+        }
+        
+        .quote-text {
+            font-weight: bold;
+            color: #8a1f1f;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            font-family: 'STKaiti', serif;
+        }
+        
+        .watermark {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 5rem;
+            opacity: 0.05;
+            color: #5d4c3a;
+            z-index: 0;
+            transform: rotate(-25deg);
+            font-family: 'STKaiti', serif;
+        }
+        
+        .nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #d9c7a8;
+            border: 2px solid #8a1f1f;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            background: #8a1f1f;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(138,31,31,0.5);
+        }
+        
+        .footer {
+            margin-top: 70px;
+            padding: 25px;
+            font-size: 1.1rem;
+            color: #8a7560;
+            border-top: 1px solid #d9c7a8;
+            max-width: 800px;
+            margin: 70px auto 0;
+            letter-spacing: 1px;
+            background: rgba(232,225,200,0.6);
+            border-radius: 12px;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) rotate(2deg); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) rotate(0); 
+            }
+        }
+        
+        .card {
+            animation: fadeIn 0.7s forwards;
+            opacity: 0;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+        .card:nth-child(8) { animation-delay: 0.8s; }
+        
+        /* 响应式设计 */
+        @media (max-width: 1300px) {
+            .cards-container {
+                gap: 30px;
+            }
+            
+            .card {
+                width: 360px;
+                height: 470px;
+            }
+        }
+        
+        @media (max-width: 1150px) {
+            .cards-container {
+                gap: 25px;
+            }
+            
+            .card {
+                width: 340px;
+                height: 460px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .card {
+                width: calc(50% - 20px);
+                height: 490px;
+            }
+            
+            .header h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: 500px;
+                height: 450px;
+            }
+            
+            .header h1 {
+                font-size: 3rem;
+            }
+            
+            .header p {
+                font-size: 1.2rem;
+            }
+            
+            .quote {
+                font-size: 1.15rem;
+                padding: 15px 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 5px;
+            }
+            
+            .header h1::before, .header h1::after {
+                font-size: 2.2rem;
+            }
+            
+            .header h1::before { left: -40px; }
+            .header h1::after { right: -40px; }
+            
+            .card {
+                height: 480px;
+            }
+            
+            .card-title {
+                font-size: 1.8rem;
+            }
+            
+            .quote {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ink-bg"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>高一语文高频考点</h1>
+            <p>依据近年高考命题趋势，提炼文言语法、诗歌鉴赏、现代文阅读等八大核心模块，涵盖全国卷90%高频考点</p>
+            <div class="quote">
+                "不积跬步，无以至千里；不积小流，无以成江海" —— 《荀子·劝学》
+            </div>
+        </div>
+        
+        <div class="cards-container">
+            <!-- 卡片1：文言语法 -->
+            <div class="card">
+                <div class="card-number">一</div>
+                <div class="card-icon"><i class="fas fa-scroll"></i></div>
+                <h2 class="card-title">文言语法</h2>
+                <div class="card-content">
+                    <p><strong>词类活用：</strong>名词作状语（箕畚运于渤海尾）、使动用法（项伯杀人，臣活之）、意动用法（吾妻之美我者）</p>
+                    <p><strong>特殊句式：</strong>宾语前置（夫晋，何厌之有）、定语后置（群臣侍殿上者）、被动句（父母宗族，皆为戮没）</p>
+                    <div class="classic-quote">"青，取之于蓝，而青于蓝" —— 《[劝学]》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">重点篇目：《烛之武退秦师》《劝学》《[鸿门宴]》</div>
+                </div>
+                <div class="watermark">文</div>
+            </div>
+            
+            <!-- 卡片2：诗歌鉴赏 -->
+            <div class="card">
+                <div class="card-number">二</div>
+                <div class="card-icon"><i class="fas fa-mountain"></i></div>
+                <h2 class="card-title">诗歌鉴赏</h2>
+                <div class="card-content">
+                    <p><strong>意象体系：</strong>自然意象（明月、长亭）、人文意象（吴钩、羌笛）、典故意象（黄金台、青冢）</p>
+                    <p><strong>表现手法：</strong>比兴（关关雎鸠）、虚实结合（忽闻海上有仙山）、借景抒情（无边落木萧萧下）</p>
+                    <div class="classic-quote">"采菊东篱下，悠然见南山" —— 《饮酒·其五》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">高频诗人：李白、杜甫、苏轼、李清照</div>
+                </div>
+                <div class="watermark">诗</div>
+            </div>
+            
+            <!-- 卡片3：现代文阅读 -->
+            <div class="card">
+                <div class="card-number">三</div>
+                <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                <h2 class="card-title">现代文阅读</h2>
+                <div class="card-content">
+                    <p><strong>小说三要素：</strong>人物（祥林嫂）、情节（林教头风雪山神庙）、环境（鲁镇祝福场景）</p>
+                    <p><strong>散文类型：</strong>抒情散文（《[荷塘月色]》）、议论散文（《[拿来主义]》）、叙事散文（《[我与地坛]》）</p>
+                    <div class="classic-quote">"希望是本无所谓有，无所谓无的" —— 《[故乡]》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">核心能力：信息筛选、主旨概括、艺术手法分析</div>
+                </div>
+                <div class="watermark">篇</div>
+            </div>
+            
+            <!-- 卡片4：修辞手法 -->
+            <div class="card">
+                <div class="card-number">四</div>
+                <div class="card-icon"><i class="fas fa-feather"></i></div>
+                <h2 class="card-title">修辞手法</h2>
+                <div class="card-content">
+                    <p><strong>八大修辞：</strong>比喻（明喻/暗喻/借喻）、比拟（拟人/拟物）、夸张（燕山雪花大如席）</p>
+                    <p><strong>进阶手法：</strong>通感（光与影的旋律）、互文（秦时明月汉时关）、列锦（枯藤老树昏鸦）</p>
+                    <div class="classic-quote">"问君能有几多愁？恰似一江春水向东流" —— 《[虞美人]》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">答题关键：手法识别+内容分析+表达效果</div>
+                </div>
+                <div class="watermark">辞</div>
+            </div>
+            
+            <!-- 卡片5：名著导读 -->
+            <div class="card">
+                <div class="card-number">五</div>
+                <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                <h2 class="card-title">名著导读</h2>
+                <div class="card-content">
+                    <p><strong>核心著作：</strong>《[红楼梦]》（宝黛爱情悲剧）、《[乡土中国]》（差序格局）、《[论语]》（仁礼思想）</p>
+                    <p><strong>考点聚焦：</strong>经典情节（黛玉葬花）、人物形象（别里科夫的套子）、主题思想（差序格局）</p>
+                    <div class="classic-quote">"世事洞明皆学问，人情练达即文章" —— 《红楼梦》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">新增重点：《[平凡的世界]》《[四世同堂]》</div>
+                </div>
+                <div class="watermark">著</div>
+            </div>
+            
+            <!-- 卡片6：写作技巧 -->
+            <div class="card">
+                <div class="card-number">六</div>
+                <div class="card-icon"><i class="fas fa-pen-fancy"></i></div>
+                <h2 class="card-title">写作技巧</h2>
+                <div class="card-content">
+                    <p><strong>议论文结构：</strong>总分总式、层进式、对照式（传统vs创新）</p>
+                    <p><strong>论证方法：</strong>举例论证（司马迁著史记）、比喻论证（鱼与熊掌）、引用论证（以诗证理）</p>
+                    <div class="classic-quote">"文章合为时而著，歌诗合为事而作" —— 《与元九书》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">高分关键：观点鲜明、论证严密、文采斐然</div>
+                </div>
+                <div class="watermark">作</div>
+            </div>
+            
+            <!-- 卡片7：文化常识 -->
+            <div class="card">
+                <div class="card-number">七</div>
+                <div class="card-icon"><i class="fas fa-yin-yang"></i></div>
+                <h2 class="card-title">文化常识</h2>
+                <div class="card-content">
+                    <p><strong>文学流派：</strong>建安风骨（三曹七子）、山水田园诗派（王孟）、豪放派（苏辛）</p>
+                    <p><strong>典籍知识：</strong>四书五经、前四史（《[史记]》《[汉书]》《[后汉书]》《[三国志]》）</p>
+                    <div class="classic-quote">"究天人之际，通古今之变" —— 《报任安书》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">高频考点：科举制度、古代官职、传统节日</div>
+                </div>
+                <div class="watermark">史</div>
+            </div>
+            
+            <!-- 卡片8：语言运用 -->
+            <div class="card">
+                <div class="card-number">八</div>
+                <div class="card-icon"><i class="fas fa-comment-dots"></i></div>
+                <h2 class="card-title">语言运用</h2>
+                <div class="card-content">
+                    <p><strong>病句类型：</strong>搭配不当、成分残缺、结构混乱、不合逻辑</p>
+                    <p><strong>变换句式：</strong>长短句互换、整散句转换、下定义（属+种差）</p>
+                    <div class="classic-quote">"吟安一个字，捻断数茎须" —— 《[苦吟]》</div>
+                </div>
+                <div class="card-footer">
+                    <div class="quote-text">新题型：信息补写、图文转换、应用文改错</div>
+                </div>
+                <div class="watermark">言</div>
+            </div>
+        </div>
+        
+        <div class="nav-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        
+        <div class="footer">
+            <p>高考命题规律：文言文阅读（24分） | 古代诗歌鉴赏（9分） | 名篇名句默写（6分） | 现代文阅读（30分） | 语言运用（20分） | 写作（60分）</p>
+        </div>
+    </div>
+    
+    <script>
+        // 3D悬停效果
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleY = (x - centerX) / 25;
+                const angleX = (centerY - y) / 25;
+                
+                card.style.transform = `perspective(1500px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-20px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1500px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+        
+        // 轮播导航
+        const dots = document.querySelectorAll('.dot');
+        const cardContainer = document.querySelector('.cards-container');
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                
+                cardContainer.scrollTo({
+                    left: index * (cardContainer.scrollWidth / dots.length),
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 自动轮播
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % dots.length;
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === currentSlide);
+            });
+            
+            cardContainer.scrollTo({
+                left: currentSlide * (cardContainer.scrollWidth / dots.length),
+                behavior: 'smooth'
+            });
+        }
+        
+        setInterval(nextSlide, 10000);
+    </script>
+</body>
+</html>
